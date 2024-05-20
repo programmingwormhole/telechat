@@ -133,10 +133,13 @@ class RegisterScreen extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                CustomButton(
-                  label: 'Sign Up',
-                  onTap: () {},
-                ),
+                Obx(
+                  () => CustomButton(
+                    label:
+                        controller.isLoading.value ? 'Loading...' : 'Sign Up',
+                    onTap: () => controller.register(),
+                  ),
+                )
               ],
             ),
           ),

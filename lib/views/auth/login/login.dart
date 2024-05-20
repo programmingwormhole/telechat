@@ -81,9 +81,12 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  CustomButton(
-                    label: 'Log In',
-                    onTap: () {},
+                  Obx(
+                    () => CustomButton(
+                      label:
+                          controller.isLoading.value ? 'Loading...' : 'Log In',
+                      onTap: () => controller.login(),
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
