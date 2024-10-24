@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:telechat/controllers/home_controller.dart';
 import 'package:telechat/controllers/message_controller.dart';
+import 'package:telechat/core/services/shared_services.dart';
+import 'package:telechat/views/auth/login/login.dart';
 import 'package:telechat/views/messages/messages.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,7 +20,10 @@ class HomeScreen extends StatelessWidget {
         centerTitle: false,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              SharedServices.removeData('token');
+              Get.offAll(() => const LoginScreen());
+            },
             icon: Icon(Icons.logout),
           )
         ],

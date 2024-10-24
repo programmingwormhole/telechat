@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:telechat/controllers/message_controller.dart';
-import 'package:telechat/models/users_model.dart';
-import 'package:telechat/utils/colors.dart';
+
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
@@ -18,6 +17,13 @@ class _MessageScreenState extends State<MessageScreen> {
   void initState() {
     super.initState();
     controller.getMessages();
+    controller.websocket();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller.channel.sink.close();
   }
 
   @override

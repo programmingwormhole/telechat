@@ -11,6 +11,7 @@ String messageModelToJson(List<MessageModel> data) => json.encode(List<dynamic>.
 class MessageModel {
   int? id;
   int? senderId;
+  dynamic chatID;
   int? receiverId;
   String? message;
   String? type;
@@ -27,10 +28,12 @@ class MessageModel {
     this.createdAt,
     this.updatedAt,
     this.isMe,
+    this.chatID,
   });
 
   factory MessageModel.fromJson(Map<String, dynamic> json) => MessageModel(
     id: json["id"],
+    chatID: json["chat_id"],
     senderId: json["sender_id"],
     receiverId: json["receiver_id"],
     message: json["message"],
